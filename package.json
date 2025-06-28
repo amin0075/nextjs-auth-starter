@@ -44,11 +44,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aminkeshavarzi/nextjs-auth-starter.git"
+    "url": "https://github.com/amin0075/nextjs-auth-starter.git"
   },
-  "homepage": "https://github.com/aminkeshavarzi/nextjs-auth-starter#readme",
+  "homepage": "https://github.com/amin0075/nextjs-auth-starter#readme",
   "bugs": {
-    "url": "https://github.com/aminkeshavarzi/nextjs-auth-starter/issues"
+    "url": "https://github.com/amin0075/nextjs-auth-starter/issues"
   },
   "dependencies": {
     "better-auth": "^1.2.10",
