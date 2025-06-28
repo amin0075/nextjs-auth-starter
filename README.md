@@ -1,20 +1,39 @@
-# Next.js ## ✨ Features
+# Next.js Auth ## Features
 
-- 🔐 **Complete Auth Flow**: Email/password authentication with secure login/signup
-- ⚡ **Immediate Access**: Dashboard access right after signup (no verification barrier)
-- ✉️ **Optional Email Verification**: Users can verify emails from their profile when ready
-- 🔗 **Google OAuth**: One-click sign-in with Google
-- 🔑 **Password Reset**: Secure password recovery via email
-- 🛡️ **Route Protection**: Automatic middleware protection for dashboard routes
-- 📱 **Modern UI**: Beautiful, responsive components with shadcn/ui
-- 🗄️ **PostgreSQL + Drizzle**: Type-safe database with modern ORM
-- ☁️ **NeonDB Ready**: Optimized for serverless PostgreSQL
-- 📧 **Email Service**: Integrated Mailjet for transactional emails
-- 📝 **Form Validation**: Robust validation with Zod schemas> **⚠️ CRITICAL REQUIREMENTS:**
-  > - Your Next.js project **MUST use the `src/` directory structure**
-  > - Install this package **at the start of your project** (it overwrites configuration files)
-  > - Ensure you have `src/app/` directory before installation
-  > - **MUST complete ALL environment variables** (database, API keys, secrets)
+- 🔐 Email/Password authentication with secure login/signup
+- ⚡ **Immediate dashboard access** after signup (no verification required)
+- ✉️ Optional email verification (can be done from profile)
+- 🔗 Google OAuth integration
+- 🔑 Password reset functionality
+- 🛡️ Route protection middleware
+- 📱 Responsive UI with shadcn/ui components
+- 🗄️ PostgreSQL with Drizzle ORM
+- ☁️ NeonDB integration
+- 🎨 Beautiful, modern UI components
+- 📝 Form validation with Zod
+- 📧 Mailjet email service integration
+
+## 📦 Installation
+
+```bash
+npm install nextjs-auth-starter
+```
+
+**Or install and initialize in one command:**
+```bash
+npx nextjs-auth-starter init
+```
+
+🔗 **npm Package**: [nextjs-auth-starter](https://www.npmjs.com/package/nextjs-auth-starter)m version](https://badge.fury.io/js/nextjs-auth-starter.svg)](https://badge.fury.io/js/nextjs-auth-starter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dm/nextjs-auth-starter.svg)](https://www.npmjs.com/package/nextjs-auth-starter)
+[![npm](https://img.shields.io/npm/v/nextjs-auth-starter.svg)](https://www.npmjs.com/package/nextjs-auth-starter)
+
+> **⚠️ CRITICAL REQUIREMENTS:**
+> - Your Next.js project **MUST use the `src/` directory structure**
+> - Install this package **at the start of your project** (it overwrites configuration files)
+> - Ensure you have `src/app/` directory before installation
+> - **MUST complete ALL environment variables** (database, API keys, secrets)
 
 A complete, production-ready authentication solution for Next.js applications using Better Auth, featuring email/password authentication, Google OAuth, email verification, password reset, and protected dashboard routes with modern UI components.
 
