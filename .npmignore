@@ -1,0 +1,37 @@
+# Development documentation (not for npm users)
+PACKAGE_OVERVIEW.md
+BUG_FIXES_SUMMARY.md
+FIXES_SUMMARY.md
+CLI_IMPROVEMENTS_SUMMARY.md
+TESTING_AND_PUBLISHING_GUIDE.md
+PUBLISHING_CHECKLIST.md
+FINAL_SUMMARY.md
+
+# Tests (users don't need these)
+tests/
+
+# Source files (dist is included instead)
+src/
+
+# Development configs
+tsup.config.ts
+.gitignore
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Logs and cache
+*.log
+node_modules/
+.turbo/
+coverage/
+
+# Environment files
+.env*
+
+# TypeScript cache
+*.tsbuildinfo

@@ -1,0 +1,74 @@
+{
+  "name": "nextjs-auth-starter",
+  "version": "1.1.0",
+  "description": "Complete Next.js authentication starter with better-auth, featuring login/signup, Google OAuth, email verification, password reset, and dashboard pages",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "templates",
+    "bin"
+  ],
+  "bin": {
+    "nextjs-auth-starter": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "node tests/setup.test.js && node tests/templates.test.js && node tests/cli.test.js",
+    "prepublishOnly": "npm run build",
+    "db:generate": "npx drizzle-kit generate",
+    "db:migrate": "npx drizzle-kit migrate",
+    "db:push": "npx drizzle-kit push",
+    "db:studio": "npx drizzle-kit studio"
+  },
+  "keywords": [
+    "nextjs",
+    "authentication",
+    "better-auth",
+    "auth-starter",
+    "drizzle-orm",
+    "neondb",
+    "oauth",
+    "google-auth",
+    "email-verification",
+    "password-reset",
+    "shadcn-ui",
+    "mailjet",
+    "zod",
+    "typescript",
+    "react"
+  ],
+  "author": "Amin Keshavarzi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aminkeshavarzi/nextjs-auth-starter.git"
+  },
+  "homepage": "https://github.com/aminkeshavarzi/nextjs-auth-starter#readme",
+  "bugs": {
+    "url": "https://github.com/aminkeshavarzi/nextjs-auth-starter/issues"
+  },
+  "dependencies": {
+    "better-auth": "^1.2.10",
+    "drizzle-orm": "^0.33.0",
+    "drizzle-kit": "^0.24.0",
+    "@neondatabase/serverless": "^0.9.0",
+    "zod": "^3.22.4",
+    "fs-extra": "^11.2.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/fs-extra": "^11.0.4",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "dotenv": "^16.5.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "next": "^14.0.0 || ^15.0.0"
+  }
+}
