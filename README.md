@@ -6,6 +6,8 @@
 
 A basic authentication setup for Next.js using [Better Auth](https://www.better-auth.com/) with PostgreSQL and Drizzle ORM. This package sets up the fundamental auth structure in your project - you can customize everything after installation.
 
+> **⚡ Quick Start:** `npx nextjs-auth-starter init`
+
 ## What you get
 
 - Basic auth pages (signin, signup, forgot password, email verification)

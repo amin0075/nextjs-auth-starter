@@ -19,7 +19,7 @@ const program = new Command();
 program
   .name("nextjs-auth-starter")
   .description("Install Next.js Auth Starter in your Next.js project")
-  .version("1.1.2");
+  .version("1.1.3");
 
 program
   .command("init")

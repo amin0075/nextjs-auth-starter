@@ -1,7 +1,7 @@
 {
   "name": "nextjs-auth-starter",
-  "version": "1.1.2",
-  "description": "CLI tool to set up Next.js authentication with better-auth, PostgreSQL, and Drizzle ORM. Copies auth files to your project - not a runtime dependency.",
+  "version": "1.1.3",
+  "description": "CLI tool to set up Next.js authentication with better-auth, PostgreSQL, and Drizzle ORM. Usage: npx nextjs-auth-starter init",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
