@@ -11,7 +11,7 @@
     "bin"
   ],
   "bin": {
-    "nextjs-auth-starter": "./bin/cli.js"
+    "nextjs-auth-starter": "bin/cli.js"
   },
   "scripts": {
     "build": "tsup",
@@ -26,7 +26,7 @@
   "keywords": [
     "nextjs",
     "authentication",
-    "better-auth", 
+    "better-auth",
     "cli",
     "starter",
     "setup-tool",
@@ -44,7 +44,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amin0075/nextjs-auth-starter.git"
+    "url": "git+https://github.com/amin0075/nextjs-auth-starter.git"
   },
   "homepage": "https://github.com/amin0075/nextjs-auth-starter#readme",
   "bugs": {
