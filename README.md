@@ -1,41 +1,29 @@
-# Next.js Auth ## Features
+# Next.js Auth Starter
 
-- 🔐 Email/Password authentication with secure login/signup
-- ⚡ **Immediate dashboard access** after signup (no verification required)
-- ✉️ Optional email verification (can be done from profile)
-- 🔗 Google OAuth integration
-- 🔑 Password reset functionality
-- 🛡️ Route protection middleware
-- 📱 Responsive UI with shadcn/ui components
-- 🗄️ PostgreSQL with Drizzle ORM
-- ☁️ NeonDB integration
-- 🎨 Beautiful, modern UI components
-- 📝 Form validation with Zod
-- 📧 Mailjet email service integration
+[![npm version](https://badge.fury.io/js/nextjs-auth-starter.svg)](https://badge.fury.io/js/nextjs-auth-starter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dm/nextjs-auth-starter.svg)](https://www.npmjs.com/package/nextjs-auth-starter)
 
-## 📦 Installation
+A basic authentication setup for Next.js using [Better Auth](https://www.better-auth.com/) with PostgreSQL and Drizzle ORM. This package sets up the fundamental auth structure in your project - you can customize everything after installation.
 
-```bash
-npm install nextjs-auth-starter
-```
+## What you get
 
-**Or install and initialize in one command:**
+- Basic auth pages (signin, signup, forgot password, email verification)
+- Database schema with Drizzle ORM
+- Better Auth configuration 
+- Route protection middleware
+- Dashboard pages with profile management
+- Google OAuth setup (optional)
+- Email service integration with Mailjet
+- shadcn/ui components for the UI
+
+## Installation
+
 ```bash
 npx nextjs-auth-starter init
 ```
 
-🔗 **npm Package**: [nextjs-auth-starter](https://www.npmjs.com/package/nextjs-auth-starter)m version](https://badge.fury.io/js/nextjs-auth-starter.svg)](https://badge.fury.io/js/nextjs-auth-starter)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/npm/dm/nextjs-auth-starter.svg)](https://www.npmjs.com/package/nextjs-auth-starter)
-[![npm](https://img.shields.io/npm/v/nextjs-auth-starter.svg)](https://www.npmjs.com/package/nextjs-auth-starter)
-
-> **⚠️ CRITICAL REQUIREMENTS:**
-> - Your Next.js project **MUST use the `src/` directory structure**
-> - Install this package **at the start of your project** (it overwrites configuration files)
-> - Ensure you have `src/app/` directory before installation
-> - **MUST complete ALL environment variables** (database, API keys, secrets)
-
-A complete, production-ready authentication solution for Next.js applications using Better Auth, featuring email/password authentication, Google OAuth, email verification, password reset, and protected dashboard routes with modern UI components.
+This downloads and runs the package without installing it as a dependency (which you don't need since it just copies files to your project).
 
 ## Features
 
@@ -150,224 +138,128 @@ npm run dev
 - `http://localhost:3000/auth/signup` - Sign up page
 - `http://localhost:3000/dashboard` - Protected dashboard (requires login)
 
-## 🔧 Environment Setup Guide
+## Requirements
 
-### Database Setup (NeonDB Recommended)
+- Next.js 14+ with App Router
+- Must use `src/` directory structure
+- PostgreSQL database
+- Node.js 18+
 
-1. **Create Account**: Go to [NeonDB](https://neon.tech) and create a free account
-2. **Create Project**: Create a new project and database
-3. **Get Connection String**: Copy the connection string from your dashboard
-4. **Add to Environment**: Add it to `.env.local` as `DATABASE_URL`
+## Quick Setup
 
-### Mailjet Email Setup (Required)
-
-1. **Create Account**: Go to [Mailjet](https://www.mailjet.com) and create a free account
-2. **Get API Keys**: Get your API Key and Secret Key from the dashboard
-3. **Verify Sender**: Verify a sender domain or email address
-4. **Add to Environment**: Add credentials to `.env.local`
-
-### Google OAuth Setup (Optional)
-
-1. **Google Cloud Console**: Go to [Google Cloud Console](https://console.cloud.google.com)
-2. **Create Project**: Create a new project or select existing one
-3. **Enable APIs**: Enable Google+ API and Google OAuth2 API
-4. **Create Credentials**: Create OAuth 2.0 credentials
-5. **Configure Domains**: Add your domain to authorized origins and redirect URIs
-6. **Add to Environment**: Add credentials to `.env.local`
-
-### Generate Auth Secret
-
-Generate a secure random string (32+ characters):
-
+### 1. Create Next.js project with src structure
 ```bash
-# macOS/Linux
-openssl rand -hex 32
-
-# Windows PowerShell
-[System.Web.Security.Membership]::GeneratePassword(32, 0)
-
-# Online
-# Visit: https://www.uuidgenerator.net/api/version4
+npx create-next-app@latest my-app --typescript --tailwind --eslint --app --src-dir
+cd my-app
 ```
 
-**Security Note**: Never use the same secret in development and production!
+### 2. Set up your project
+```bash
+npx nextjs-auth-starter init
+```
 
-## What's Included
+This copies all the auth files to your project:
+- Auth pages in `src/app/auth/`
+- Dashboard pages in `src/app/dashboard/`
+- Database schema in `src/lib/`
+- UI components in `src/components/`
+- Configuration files (overwrites some existing ones)
 
-### Authentication Pages
+### 3. Set up environment variables
+Copy the generated `.env.example` to `.env.local` and fill in:
 
-- **Sign In** (`/auth/signin`) - Email/password and Google OAuth
-- **Sign Up** (`/auth/signup`) - User registration with immediate dashboard access
-- **Forgot Password** (`/auth/forgot-password`) - Password reset functionality
+```env
+# Database
+DATABASE_URL="postgresql://user:pass@host:port/db"
 
-### User Experience Flow
+# Better Auth
+BETTER_AUTH_SECRET="your-32-char-secret"
+BETTER_AUTH_URL="http://localhost:3000"
 
-1. **Sign Up** → Immediate access to dashboard (no verification required)
-2. **Email Verification** → Optional, can be done from profile page later
-3. **Dashboard Access** → Full functionality available immediately
-4. **Profile Management** → Email verification status and controls
+# Google OAuth (optional)
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret" 
 
-### Protected Dashboard
+# Email service (Mailjet)
+MAILJET_API_KEY="your-mailjet-api-key"
+MAILJET_SECRET_KEY="your-mailjet-secret-key"
+MAILJET_FROM_EMAIL="noreply@yourdomain.com"
+```
 
-- **Dashboard** (`/dashboard`) - Main dashboard page (protected by default)
-- **Profile** (`/dashboard/profile`) - User profile with email verification controls
+### 4. Set up database
+```bash
+npm run db:push
+```
+
+### 5. Start development
+```bash
+npm run dev
+```
+
+Visit `/auth/signin` to see the auth pages.
+
+## Database Setup
+
+### Using NeonDB (Recommended)
+1. Go to [neon.tech](https://neon.tech) and create a free account
+2. Create a new project and database
+3. Copy the connection string to your `.env.local`
+
+### Using other PostgreSQL providers
+Any PostgreSQL database works - Supabase, Railway, PlanetScale, etc.
+
+## Email Setup (Mailjet)
+
+1. Create account at [mailjet.com](https://mailjet.com)
+2. Get your API key and secret from the dashboard
+3. Add a verified sender email/domain
+4. Add credentials to `.env.local`
+
+## Google OAuth (Optional)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create OAuth 2.0 credentials
+3. Add your domain to authorized origins
+4. Add credentials to `.env.local`
+
+## What's included after setup
+
+### Pages
+- `/auth/signin` - Login page
+- `/auth/signup` - Registration  
+- `/auth/forgot-password` - Password reset
+- `/auth/verify-email` - Email verification
+- `/dashboard` - Protected dashboard
+- `/dashboard/profile` - User profile
 
 ### API Routes
-
-- **Auth Handler** (`/api/auth/[...all]`) - Better Auth API endpoints
-
-### Middleware
-
-- **Route Protection** - Automatically protects `/dashboard/**` routes
-- **Session Validation** - Validates user sessions
-- **Redirect Logic** - Redirects unauthenticated users to signin
+- `/api/auth/[...all]` - Better Auth endpoints
 
 ### Database Schema
+- Users table
+- Sessions table  
+- Accounts table (for OAuth)
+- Verification tokens table
 
-- **Users** - User account information
-- **Sessions** - User session management
-- **Accounts** - OAuth provider accounts
-- **Verification** - Email verification tokens
-
-## Configuration
-
-### Database
-
-The package uses Drizzle ORM with PostgreSQL and follows the recommended structure:
-
-```
-lib/
-├── drizzle/
-│   ├── index.ts     # Database connection
-│   └── schema.ts    # Database schema
-├── db.ts            # Database export
-└── auth.ts          # Auth configuration
-```
-
-Configure your database connection in the environment variables:
-
-```env
-DATABASE_URL="postgresql://username:password@host:port/database"
-```
-
-### Email Service (Mailjet)
-
-The package uses Mailjet for sending verification and password reset emails. To set up Mailjet:
-
-1. Go to [Mailjet](https://www.mailjet.com/) and create an account
-2. Get your API Key and Secret Key from the dashboard
-3. Add a verified sender domain/email
-4. Add the credentials to your `.env.local`:
-
-```env
-MAILJET_API_KEY="your-api-key"
-MAILJET_SECRET_KEY="your-secret-key"
-MAILJET_FROM_EMAIL="noreply@yourdomain.com"
-MAILJET_FROM_NAME="Your App Name"
-```
-
-### Google OAuth
-
-To enable Google OAuth, set up a Google Cloud Console project and add the credentials:
-
-```env
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
-```
-
-### Route Protection
-
-By default, all routes under `/dashboard/**` are protected. You can modify the protected routes in `middleware.ts`:
-
-```typescript
-const protectedRoutes = ["/dashboard", "/admin", "/profile"];
-```
-
-## Available Scripts
-
-The package adds the following npm scripts to your project for database management:
-
-```bash
-# Database Schema Generation
-npm run db:generate    # Generate migration files from schema changes
-
-# Database Migration
-npm run db:push        # Push schema changes directly to database
-
-# Database Studio
-npm run db:studio      # Open Drizzle Studio (web-based database browser)
-```
-
-### When to use each command:
-
-- **`npm run db:generate`**: Use this when you make changes to your database schema in `src/lib/drizzle/schema.ts`. It creates migration files that track your schema changes.
-
-- **`npm run db:push`**: Use this to directly push your schema changes to the database. Great for development, but use migrations for production.
-
-- **`npm run db:studio`**: Use this to visually browse and edit your database data through a web interface. Very helpful for debugging and data management.
+### Middleware
+- Protects `/dashboard/*` routes
+- Redirects unauthenticated users
 
 ## Customization
 
-### Styling
+After installation, you can modify:
+- Database schema in `src/lib/schema.ts`
+- Auth configuration in `src/lib/auth.ts`
+- UI components in `src/components/`
+- Styling in `tailwind.config.js` and `app/globals.css`
 
-The package uses Tailwind CSS and shadcn/ui components. You can customize the theme by modifying:
-
-- `tailwind.config.js` - Tailwind configuration
-- `app/globals.css` - Global styles and CSS variables
-
-### Authentication Logic
-
-Modify the authentication behavior in:
-
-- `lib/auth.ts` - Better Auth configuration
-- `lib/auth-client.ts` - Client-side authentication methods
-
-### Database Schema
-
-Extend the database schema in:
-
-- `lib/schema.ts` - Drizzle schema definitions
-- `drizzle.config.ts` - Drizzle configuration
-
-## Development
-
-### Building the Package
+## Database Commands
 
 ```bash
-npm run build
+npm run db:generate  # Generate migration files
+npm run db:push      # Push schema to database  
+npm run db:studio    # Open database browser
 ```
-
-### Publishing
-
-```bash
-npm publish
-```
-
-## Requirements
-
-- Next.js 14+ (App Router)
-- React 18+
-- Node.js 18+
-- PostgreSQL database (NeonDB recommended)
-
-## Dependencies
-
-### Runtime Dependencies
-
-- `better-auth` - Authentication library
-- `drizzle-orm` - Database ORM
-- `@neondatabase/serverless` - NeonDB adapter
-- `zod` - Schema validation
-- `@radix-ui/react-*` - UI primitives
-- `class-variance-authority` - CSS utility
-- `clsx` & `tailwind-merge` - CSS class utilities
-- `lucide-react` - Icons
-
-### Development Dependencies
-
-- `drizzle-kit` - Database migration tool
-- `typescript` - TypeScript compiler
-- `tailwindcss` - CSS framework
 
 ## License
 

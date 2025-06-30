@@ -19,7 +19,7 @@ const program = new Command();
 program
   .name("nextjs-auth-starter")
   .description("Install Next.js Auth Starter in your Next.js project")
-  .version("1.1.0");
+  .version("1.1.2");
 
 program
   .command("init")
@@ -127,7 +127,7 @@ program
       );
       console.log(chalk.yellow("\n📝 Next steps:"));
       if (options.install === false) {
-        console.log("1. Install dependencies: npm install");
+        console.log("1. Install dependencies: npm install --legacy-peer-deps");
       }
       console.log("2. Copy .env.example to .env.local and fill in your values");
       console.log("3. Set up your database and get your connection string");
@@ -356,7 +356,7 @@ async function installDependencies(templatesDir, targetDir, chalk) {
     console.log(
       chalk.gray(`Installing: ${Object.keys(deps.dependencies).join(", ")}`)
     );
-    execSync(`npm install ${depsList}`, {
+    execSync(`npm install ${depsList} --legacy-peer-deps`, {
       cwd: targetDir,
       stdio: "inherit",
     });
@@ -375,7 +375,7 @@ async function installDependencies(templatesDir, targetDir, chalk) {
         )}`
       )
     );
-    execSync(`npm install --save-dev ${devDepsList}`, {
+    execSync(`npm install --save-dev ${devDepsList} --legacy-peer-deps`, {
       cwd: targetDir,
       stdio: "inherit",
     });
